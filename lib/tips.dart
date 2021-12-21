@@ -6,44 +6,55 @@ import 'amount.dart';
 import 'tip_button.dart';
 
 class Tips extends HookWidget {
-  const Tips({Key? key}) : super(key: key);
+  const Tips({Key? key, bool? isMobile = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final tipAmount = useWatchOnly((TipsService service) => service.tipAmount);
     final total = useWatchOnly((TipsService service) => service.total);
+    final service = useGet<TipsService>();
+
+    var padding = 8.0;
+
+    final textStyle = service.isWatch
+        ? TextStyle(fontSize: 16)
+        : TextStyle(fontSize: 24);
 
     return Column(
       children: [
-        Amount(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const [
-            TipButton(value: 18),
-            TipButton(value: 20),
-            TipButton(value: 22),
-          ],
+        Padding(
+          padding: EdgeInsets.only(bottom: padding),
+          child: Amount(),
+        ),
+        Padding(
+          padding: EdgeInsets.only(bottom: padding),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
+              TipButton(value: 18),
+              TipButton(value: 20),
+              TipButton(value: 22),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(bottom: padding),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text("Tip Amount", style: textStyle,),
+              Text("\$ " + tipAmount.toStringAsFixed(2), style: textStyle,),
+            ],
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Text("Tip Amount"),
-            Text(tipAmount.toStringAsFixed(2))
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const Text("Total"),
-            Text(total.toStringAsFixed(2))
+            Text("Total", style: textStyle,),
+            Text("\$ " + total.toStringAsFixed(2), style: textStyle,),
           ],
         ),
       ],
     );
   }
 }
-
-
-
-
-

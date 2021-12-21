@@ -18,4 +18,13 @@ class TipsService extends ChangeNotifier {
   num get tipAmount => amount * (tip / 100);
 
   num get total => amount + tipAmount;
+
+  bool _isWatch = false;
+
+  set isWatch(bool value) {
+    _isWatch = value;
+    notifyListeners();
+  }
+
+  bool get isWatch => _isWatch;
 }

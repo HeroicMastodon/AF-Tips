@@ -22,8 +22,30 @@ class TipButton extends HookWidget {
 
     final child = Text(value.toString() + '%');
 
+    var shape =
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0));
+
+    var density = service.isWatch
+        ? VisualDensity(horizontal: -4, vertical: -3)
+        : VisualDensity.standard;
+
+    final elevatedStyle =
+        ElevatedButton.styleFrom(shape: shape, visualDensity: density);
+    final outlinedStyle = OutlinedButton.styleFrom(
+        shape: shape,
+        visualDensity: density,
+        side: BorderSide(color: Theme.of(context).colorScheme.primary));
+
     return isSelected
-        ? ElevatedButton(onPressed: pressHandler, child: child)
-        : OutlinedButton(onPressed: pressHandler, child: child);
+        ? ElevatedButton(
+            onPressed: pressHandler,
+            child: child,
+            style: elevatedStyle,
+          )
+        : OutlinedButton(
+            onPressed: pressHandler,
+            child: child,
+            style: outlinedStyle,
+          );
   }
 }

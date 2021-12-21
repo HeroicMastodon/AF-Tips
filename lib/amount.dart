@@ -1,7 +1,6 @@
 import 'package:af_tips/tips_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
 
 class Amount extends HookWidget {
@@ -13,9 +12,9 @@ class Amount extends HookWidget {
   Widget build(BuildContext context) {
     final service = useGet<TipsService>();
 
-    return TextField(
+    var textField = TextField(
       keyboardType: TextInputType.number,
-      textAlign: TextAlign.right,
+      textAlign: TextAlign.center,
       inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp(r'[\d]+[.]{0,1}[\d]*'))
       ],
@@ -24,8 +23,21 @@ class Amount extends HookWidget {
         service.amount = val ?? 0;
       },
       decoration: const InputDecoration(
-        border: OutlineInputBorder()
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.elliptical(100, 100))),
+        isDense: true,
+        prefix: Text("\$")
       ),
+      style: TextStyle(
+          fontWeight: FontWeight.bold, fontSize: service.isWatch ? 16 : 24),
     );
+
+    return service.isWatch
+        ? SizedBox(
+            height: 24,
+            width: 108,
+            child: textField,
+          )
+        : textField;
   }
 }
