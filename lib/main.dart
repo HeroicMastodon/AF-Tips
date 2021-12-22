@@ -40,8 +40,6 @@ class MyHomePage extends HookWidget {
     if (!kIsWeb) {
       final size = MediaQuery.of(context).size;
 
-      print(size);
-      print(size.longestSide);
       service.isWatch = size.longestSide < 300 ? true : false;
     }
 
@@ -49,7 +47,7 @@ class MyHomePage extends HookWidget {
     var appBar = AppBar(
       title: Container(
         child: Text(title),
-        alignment: Alignment.center,
+        alignment: service.isWatch ? Alignment.center : Alignment.topLeft,
       ),
     );
     return Scaffold(
