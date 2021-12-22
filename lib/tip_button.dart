@@ -18,6 +18,8 @@ class TipButton extends HookWidget {
       return service.tip == value;
     });
 
+    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
+
     pressHandler() => service.tip = value;
 
     final child = Text(value.toString() + '%');
@@ -25,7 +27,7 @@ class TipButton extends HookWidget {
     var shape =
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0));
 
-    var density = service.isWatch
+    var density = isWatch
         ? VisualDensity(horizontal: -4, vertical: -3)
         : VisualDensity.standard;
 

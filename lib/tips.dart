@@ -12,11 +12,12 @@ class Tips extends HookWidget {
   Widget build(BuildContext context) {
     final tipAmount = useWatchOnly((TipsService service) => service.tipAmount);
     final total = useWatchOnly((TipsService service) => service.total);
+    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
     final service = useGet<TipsService>();
 
     var padding = 8.0;
 
-    final textStyle = service.isWatch
+    final textStyle = isWatch
         ? TextStyle(fontSize: 16)
         : TextStyle(fontSize: 24);
 

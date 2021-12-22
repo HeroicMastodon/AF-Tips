@@ -11,9 +11,10 @@ class Amount extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final service = useGet<TipsService>();
+    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
 
     var textField = TextField(
-      keyboardType: TextInputType.number,
+      keyboardType: isWatch ? TextInputType.text : TextInputType.number,
       textAlign: TextAlign.center,
       inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp(r'[\d]+[.]{0,1}[\d]*'))
@@ -29,10 +30,10 @@ class Amount extends HookWidget {
         prefix: Text("\$")
       ),
       style: TextStyle(
-          fontWeight: FontWeight.bold, fontSize: service.isWatch ? 16 : 24),
+          fontWeight: FontWeight.bold, fontSize: isWatch ? 16 : 24),
     );
 
-    return service.isWatch
+    return isWatch
         ? SizedBox(
             height: 24,
             width: 108,

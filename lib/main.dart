@@ -40,18 +40,19 @@ class MyHomePage extends HookWidget {
     if (!kIsWeb) {
       final size = MediaQuery.of(context).size;
 
-      service.isWatch = size.longestSide < 300 ? true : false;
+      service.isWatch = size.longestSide < 300;
     }
 
     final insets = service.isWatch ? 8.0 : 16.0;
+    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
     var appBar = AppBar(
       title: Container(
         child: Text(title),
-        alignment: service.isWatch ? Alignment.center : Alignment.topLeft,
+        alignment: isWatch ? Alignment.center : Alignment.topLeft,
       ),
     );
     return Scaffold(
-      appBar: service.isWatch
+      appBar: isWatch
           ? PreferredSize(
               preferredSize: const Size.fromHeight(32.0),
               child: appBar,
