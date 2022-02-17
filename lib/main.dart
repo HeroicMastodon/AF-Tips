@@ -1,5 +1,5 @@
 import 'package:af_tips/setup.dart';
-import 'package:af_tips/tips.dart';
+import 'package:af_tips/tips/view/pages/tips.dart';
 import 'package:af_tips/tips_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
