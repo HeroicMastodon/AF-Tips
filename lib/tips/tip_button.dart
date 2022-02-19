@@ -1,3 +1,4 @@
+import 'package:af_tips/tips/tips_buttons.dart';
 import 'package:af_tips/tips_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
@@ -39,15 +40,13 @@ class TipButton extends HookWidget {
         side: BorderSide(color: Theme.of(context).colorScheme.primary));
 
     return isSelected
-        ? ElevatedButton(
-            onPressed: pressHandler,
+        ? TipsElevatedButton(
+            onTap: pressHandler,
             child: child,
-            style: elevatedStyle,
           )
-        : OutlinedButton(
-            onPressed: pressHandler,
+        : TipsOutlinedButton(
+            onTap: pressHandler,
             child: child,
-            style: outlinedStyle,
           );
   }
 }
