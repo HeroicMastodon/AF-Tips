@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
 
-import '../tips_service.dart';
+import 'tips_service.dart';
 
 typedef OnTap = void Function();
 

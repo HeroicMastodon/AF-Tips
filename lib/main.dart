@@ -1,6 +1,6 @@
 import 'package:af_tips/setup.dart';
-import 'package:af_tips/tips/tips.dart';
-import 'package:af_tips/tips_service.dart';
+import 'package:af_tips/tips/tips_page.dart';
+import 'package:af_tips/tips/tips_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

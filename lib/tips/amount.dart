@@ -1,10 +1,10 @@
-import 'package:af_tips/tips_service.dart';
+import 'package:af_tips/tips/tips_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
 
 class Amount extends HookWidget {
-  Amount({
+  const Amount({
     Key? key,
   }) : super(key: key);
 

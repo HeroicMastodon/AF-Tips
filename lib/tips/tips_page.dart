@@ -1,5 +1,5 @@
 import 'package:af_tips/tips/tips_results.dart';
-import 'package:af_tips/tips_service.dart';
+import 'package:af_tips/tips/tips_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
 
