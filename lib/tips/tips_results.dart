@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'tip_button.dart';
+import 'widgets/tip_button.dart';
 
 class TipsResult extends StatelessWidget {
   const TipsResult({

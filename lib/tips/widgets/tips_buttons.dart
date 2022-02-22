@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
 
-import 'tips_service.dart';
+import '../tips_service.dart';
 
 typedef OnTap = void Function();
 
@@ -15,7 +15,9 @@ class TipsOutlinedButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
+    final service = useGet<TipsService>();
+    final device = useListenable(service.device);
+    final isWatch = device.value.when(mobile: () => false, watch: () => true);
 
     var shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(45.0),
@@ -47,7 +49,10 @@ class TipsElevatedButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
+    final service = useGet<TipsService>();
+    final device = useListenable(service.device);
+
+    final isWatch = device.value.when(mobile: () => false, watch: () => true);
 
     var shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(45.0),

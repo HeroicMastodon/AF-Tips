@@ -4,17 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
 
 import 'amount.dart';
-import 'tip_button.dart';
+import 'widgets/tip_button.dart';
 
 class Tips extends HookWidget {
   const Tips({Key? key, bool? isMobile = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final tipAmount = useWatchOnly((TipsService service) => service.tipAmount);
-    final total = useWatchOnly((TipsService service) => service.total);
-    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
+    // final tipAmount = useWatchOnly((TipsService service) => service.tipAmount);
+    // final total = useWatchOnly((TipsService service) => service.total);
+    // final isWatch = useWatchOnly((TipsService service) => service.isWatch);
     final service = useGet<TipsService>();
+    final amount = useListenable(service.amount);
+    final device = useWatchOnly((TipsService service) => service.device);
+    final isWatch = device.value.when(mobile: () => false, watch: () => true);
+    // final total
 
     var padding = 8.0;
 
@@ -30,8 +34,8 @@ class Tips extends HookWidget {
         TipsResult(
           padding: padding,
           textStyle: textStyle,
-          tipAmount: tipAmount,
-          total: total,
+          tipAmount: 0,
+          total: 0,
         ),
       ],
     );

@@ -1,4 +1,4 @@
-import 'package:af_tips/tips/tips_buttons.dart';
+import 'package:af_tips/tips/widgets/tips_buttons.dart';
 import 'package:af_tips/tips/tips_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
@@ -14,14 +14,14 @@ class TipButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final service = useGet<TipsService>();
+    final amount = useListenable(service.amount);
+    final device = useListenable(service.device);
 
-    final isSelected = useWatchOnly((TipsService service) {
-      return service.tip == value;
-    });
+    final isSelected = amount.value.tipPercent == value;
 
-    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
+    final isWatch = device.value.when(mobile: () => false, watch: () => true);
 
-    pressHandler() => service.tip = value;
+    pressHandler() => service.setTipPercent(value);
 
     final child = Text(value.toString() + '%');
 
@@ -29,7 +29,7 @@ class TipButton extends HookWidget {
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0));
 
     var density = isWatch
-        ? VisualDensity(horizontal: -4, vertical: -3)
+        ? const VisualDensity(horizontal: -4, vertical: -3)
         : VisualDensity.standard;
 
     final elevatedStyle =

@@ -36,28 +36,28 @@ class MyHomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final service = useGet<TipsService>();
+    final device = useListenable(service.device);
 
-    if (!kIsWeb) {
-      final size = MediaQuery.of(context).size;
+    service.setDeviceState(MediaQuery.of(context));
+    final insets = device.value.when(mobile: () => 16.0, watch: () => 8.0);
 
-      service.isWatch = size.longestSide < 300;
-    }
-
-    final insets = service.isWatch ? 8.0 : 16.0;
-    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
     var appBar = AppBar(
       title: Container(
         child: Text(title),
-        alignment: isWatch ? Alignment.center : Alignment.topLeft,
+        alignment: device.value.when(
+          mobile: () => Alignment.topLeft,
+          watch: () => Alignment.center,
+        ),
       ),
     );
     return Scaffold(
-      appBar: isWatch
-          ? PreferredSize(
-              preferredSize: const Size.fromHeight(32.0),
-              child: appBar,
-            )
-          : appBar,
+      appBar: device.value.when(
+        mobile: () => appBar,
+        watch: () => PreferredSize(
+          child: appBar,
+          preferredSize: const Size.fromHeight(32),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.all(insets),
         child: const Center(child: Tips()),

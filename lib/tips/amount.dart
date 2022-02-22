@@ -10,8 +10,9 @@ class Amount extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final service = useGet<TipsService>();
-    final isWatch = useWatchOnly((TipsService service) => service.isWatch);
+    final device = useWatchOnly((TipsService service) => service.device);
+    // final isWatch = useWatchOnly((TipsService service) => service.isWatch);
+    final isWatch = device.value.when(mobile: () => false, watch: () => true);
 
     var textField = TextField(
       keyboardType: isWatch ? TextInputType.text : TextInputType.number,
@@ -21,7 +22,7 @@ class Amount extends HookWidget {
       ],
       onChanged: (value) async {
         var val = num.tryParse(value);
-        service.amount = val ?? 0;
+        // service.amount = val ?? 0;
       },
       decoration: const InputDecoration(
         border: OutlineInputBorder(
