@@ -25,20 +25,27 @@ class KeyboardKey extends HookWidget {
 
     final visualDensity = device.value.when(
       mobile: () => VisualDensity.standard,
-      watch: () => const VisualDensity(horizontal: VisualDensity.minimumDensity, vertical: VisualDensity.minimumDensity),
+      watch: () => const VisualDensity(
+          horizontal: VisualDensity.minimumDensity,
+          vertical: VisualDensity.minimumDensity),
     );
 
     final textStyle = device.value.when(
-      mobile: () => const TextStyle(fontWeight: FontWeight.normal),
+      mobile: () => const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
       watch: () => const TextStyle(fontWeight: FontWeight.bold),
+    );
+
+    final sizeBoxSize = device.value.when(
+      mobile: () => 48.0,
+      watch: () => 24.0,
     );
 
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
         child: SizedBox(
-          width: 24,
-          height: 24,
+          width: sizeBoxSize,
+          height: sizeBoxSize,
           child: TextButton(
             style: ButtonStyle(
               visualDensity: visualDensity,

@@ -17,8 +17,9 @@ class Tips extends HookWidget {
     // final isWatch = useWatchOnly((TipsService service) => service.isWatch);
     final service = useGet<TipsService>();
     final amount = useListenable(service.amount);
-    final device = useWatchOnly((TipsService service) => service.device);
-    final page = service.page;
+    final device = useListenable(service.device);
+    final page = useListenable(service.page);
+
     final isWatch = device.value.when(mobile: () => false, watch: () => true);
     // final total
 
@@ -26,6 +27,16 @@ class Tips extends HookWidget {
 
     final textStyle =
         isWatch ? const TextStyle(fontSize: 16) : const TextStyle(fontSize: 24);
+    final keyboard = Keyboard(
+      tapHandler: service.handleKeyboardEvent,
+    );
+
+    final tipsResult = TipsResult(
+      padding: padding,
+      textStyle: textStyle,
+      tipAmount: amount.value.tipAmount,
+      total: amount.value.total,
+    );
 
     return Column(
       children: [
@@ -39,17 +50,23 @@ class Tips extends HookWidget {
             ),
           ],
         ),
-        page.value.when(
-          entering: () => Expanded(
-            child: Keyboard(
-              tapHandler: (event) => service.handleKeyboardEvent(event),
+        device.value.when(
+          mobile: () {
+            return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: tipsResult,
+              ),
+              keyboard
+            ],
+          );
+          },
+          watch: () => page.value.when(
+            entering: () => Expanded(
+              child: keyboard,
             ),
-          ),
-          submitted: () => TipsResult(
-            padding: padding,
-            textStyle: textStyle,
-            tipAmount: amount.value.tipAmount,
-            total: amount.value.total,
+            submitted: () => tipsResult
           ),
         ),
       ],

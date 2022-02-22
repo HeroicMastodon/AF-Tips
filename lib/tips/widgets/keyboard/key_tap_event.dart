@@ -10,4 +10,5 @@ class KeyTapEvent with _$KeyTapEvent {
   const factory KeyTapEvent.delete() = _Delete;
   const factory KeyTapEvent.dot() = _Dot;
   const factory KeyTapEvent.submit() = _Submit;
+  const factory KeyTapEvent.back() = _Back;
 }

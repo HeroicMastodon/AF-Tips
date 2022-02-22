@@ -15,29 +15,11 @@ class TipButton extends HookWidget {
   Widget build(BuildContext context) {
     final service = useGet<TipsService>();
     final amount = useListenable(service.amount);
-    final device = useListenable(service.device);
 
     final isSelected = amount.value.tipPercent == value;
-
-    final isWatch = device.value.when(mobile: () => false, watch: () => true);
-
-    pressHandler() => service.setTipPercent(value);
-
     final child = Text(value.toString() + '%');
 
-    var shape =
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(45.0));
-
-    var density = isWatch
-        ? const VisualDensity(horizontal: -4, vertical: -3)
-        : VisualDensity.standard;
-
-    final elevatedStyle =
-        ElevatedButton.styleFrom(shape: shape, visualDensity: density);
-    final outlinedStyle = OutlinedButton.styleFrom(
-        shape: shape,
-        visualDensity: density,
-        side: BorderSide(color: Theme.of(context).colorScheme.primary));
+    pressHandler() => service.setTipPercent(value);
 
     return isSelected
         ? TipsElevatedButton(

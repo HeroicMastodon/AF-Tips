@@ -1,8 +1,12 @@
+import 'package:af_tips/tips/tips_service.dart';
+import 'package:af_tips/tips/widgets/keyboard/key_tap_event.dart';
+import 'package:af_tips/tips/widgets/tips_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it_hooks/get_it_hooks.dart';
 
 import 'widgets/tip_button.dart';
 
-class TipsResult extends StatelessWidget {
+class TipsResult extends HookWidget {
   const TipsResult({
     Key? key,
     required this.padding,
@@ -18,6 +22,9 @@ class TipsResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final service = useGet<TipsService>();
+    final device = useListenable(service.device);
+
     return Column(
       children: [
         Padding(
@@ -59,6 +66,18 @@ class TipsResult extends StatelessWidget {
               style: textStyle,
             ),
           ],
+        ),
+        device.value.maybeWhen(
+          orElse: () => const SizedBox.shrink(),
+          watch: () => Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TipsElevatedButton(
+                child: const Text('Back'),
+                onTap: () => service.handleKeyboardEvent(const KeyTapEvent.back()),
+              ),
+            ],
+          ),
         ),
       ],
     );

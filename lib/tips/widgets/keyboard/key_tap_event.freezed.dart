@@ -39,6 +39,10 @@ class _$KeyTapEventTearOff {
   _Submit submit() {
     return const _Submit();
   }
+
+  _Back back() {
+    return const _Back();
+  }
 }
 
 /// @nodoc
@@ -53,6 +57,7 @@ mixin _$KeyTapEvent {
     required TResult Function() delete,
     required TResult Function() dot,
     required TResult Function() submit,
+    required TResult Function() back,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +67,7 @@ mixin _$KeyTapEvent {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +77,7 @@ mixin _$KeyTapEvent {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,6 +88,7 @@ mixin _$KeyTapEvent {
     required TResult Function(_Delete value) delete,
     required TResult Function(_Dot value) dot,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_Back value) back,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +98,7 @@ mixin _$KeyTapEvent {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,6 +108,7 @@ mixin _$KeyTapEvent {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -195,6 +205,7 @@ class _$_Number with DiagnosticableTreeMixin implements _Number {
     required TResult Function() delete,
     required TResult Function() dot,
     required TResult Function() submit,
+    required TResult Function() back,
   }) {
     return number(value);
   }
@@ -207,6 +218,7 @@ class _$_Number with DiagnosticableTreeMixin implements _Number {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
   }) {
     return number?.call(value);
   }
@@ -219,6 +231,7 @@ class _$_Number with DiagnosticableTreeMixin implements _Number {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
     required TResult orElse(),
   }) {
     if (number != null) {
@@ -235,6 +248,7 @@ class _$_Number with DiagnosticableTreeMixin implements _Number {
     required TResult Function(_Delete value) delete,
     required TResult Function(_Dot value) dot,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_Back value) back,
   }) {
     return number(this);
   }
@@ -247,6 +261,7 @@ class _$_Number with DiagnosticableTreeMixin implements _Number {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
   }) {
     return number?.call(this);
   }
@@ -259,6 +274,7 @@ class _$_Number with DiagnosticableTreeMixin implements _Number {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
     required TResult orElse(),
   }) {
     if (number != null) {
@@ -325,6 +341,7 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
     required TResult Function() delete,
     required TResult Function() dot,
     required TResult Function() submit,
+    required TResult Function() back,
   }) {
     return clear();
   }
@@ -337,6 +354,7 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
   }) {
     return clear?.call();
   }
@@ -349,6 +367,7 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -365,6 +384,7 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
     required TResult Function(_Delete value) delete,
     required TResult Function(_Dot value) dot,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_Back value) back,
   }) {
     return clear(this);
   }
@@ -377,6 +397,7 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
   }) {
     return clear?.call(this);
   }
@@ -389,6 +410,7 @@ class _$_Clear with DiagnosticableTreeMixin implements _Clear {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -451,6 +473,7 @@ class _$_Delete with DiagnosticableTreeMixin implements _Delete {
     required TResult Function() delete,
     required TResult Function() dot,
     required TResult Function() submit,
+    required TResult Function() back,
   }) {
     return delete();
   }
@@ -463,6 +486,7 @@ class _$_Delete with DiagnosticableTreeMixin implements _Delete {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
   }) {
     return delete?.call();
   }
@@ -475,6 +499,7 @@ class _$_Delete with DiagnosticableTreeMixin implements _Delete {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -491,6 +516,7 @@ class _$_Delete with DiagnosticableTreeMixin implements _Delete {
     required TResult Function(_Delete value) delete,
     required TResult Function(_Dot value) dot,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_Back value) back,
   }) {
     return delete(this);
   }
@@ -503,6 +529,7 @@ class _$_Delete with DiagnosticableTreeMixin implements _Delete {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
   }) {
     return delete?.call(this);
   }
@@ -515,6 +542,7 @@ class _$_Delete with DiagnosticableTreeMixin implements _Delete {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -577,6 +605,7 @@ class _$_Dot with DiagnosticableTreeMixin implements _Dot {
     required TResult Function() delete,
     required TResult Function() dot,
     required TResult Function() submit,
+    required TResult Function() back,
   }) {
     return dot();
   }
@@ -589,6 +618,7 @@ class _$_Dot with DiagnosticableTreeMixin implements _Dot {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
   }) {
     return dot?.call();
   }
@@ -601,6 +631,7 @@ class _$_Dot with DiagnosticableTreeMixin implements _Dot {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
     required TResult orElse(),
   }) {
     if (dot != null) {
@@ -617,6 +648,7 @@ class _$_Dot with DiagnosticableTreeMixin implements _Dot {
     required TResult Function(_Delete value) delete,
     required TResult Function(_Dot value) dot,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_Back value) back,
   }) {
     return dot(this);
   }
@@ -629,6 +661,7 @@ class _$_Dot with DiagnosticableTreeMixin implements _Dot {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
   }) {
     return dot?.call(this);
   }
@@ -641,6 +674,7 @@ class _$_Dot with DiagnosticableTreeMixin implements _Dot {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
     required TResult orElse(),
   }) {
     if (dot != null) {
@@ -703,6 +737,7 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
     required TResult Function() delete,
     required TResult Function() dot,
     required TResult Function() submit,
+    required TResult Function() back,
   }) {
     return submit();
   }
@@ -715,6 +750,7 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
   }) {
     return submit?.call();
   }
@@ -727,6 +763,7 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
     TResult Function()? delete,
     TResult Function()? dot,
     TResult Function()? submit,
+    TResult Function()? back,
     required TResult orElse(),
   }) {
     if (submit != null) {
@@ -743,6 +780,7 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
     required TResult Function(_Delete value) delete,
     required TResult Function(_Dot value) dot,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_Back value) back,
   }) {
     return submit(this);
   }
@@ -755,6 +793,7 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
   }) {
     return submit?.call(this);
   }
@@ -767,6 +806,7 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
     TResult Function(_Delete value)? delete,
     TResult Function(_Dot value)? dot,
     TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
     required TResult orElse(),
   }) {
     if (submit != null) {
@@ -778,4 +818,136 @@ class _$_Submit with DiagnosticableTreeMixin implements _Submit {
 
 abstract class _Submit implements KeyTapEvent {
   const factory _Submit() = _$_Submit;
+}
+
+/// @nodoc
+abstract class _$BackCopyWith<$Res> {
+  factory _$BackCopyWith(_Back value, $Res Function(_Back) then) =
+      __$BackCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$BackCopyWithImpl<$Res> extends _$KeyTapEventCopyWithImpl<$Res>
+    implements _$BackCopyWith<$Res> {
+  __$BackCopyWithImpl(_Back _value, $Res Function(_Back) _then)
+      : super(_value, (v) => _then(v as _Back));
+
+  @override
+  _Back get _value => super._value as _Back;
+}
+
+/// @nodoc
+
+class _$_Back with DiagnosticableTreeMixin implements _Back {
+  const _$_Back();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'KeyTapEvent.back()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'KeyTapEvent.back'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Back);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String value) number,
+    required TResult Function() clear,
+    required TResult Function() delete,
+    required TResult Function() dot,
+    required TResult Function() submit,
+    required TResult Function() back,
+  }) {
+    return back();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String value)? number,
+    TResult Function()? clear,
+    TResult Function()? delete,
+    TResult Function()? dot,
+    TResult Function()? submit,
+    TResult Function()? back,
+  }) {
+    return back?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? number,
+    TResult Function()? clear,
+    TResult Function()? delete,
+    TResult Function()? dot,
+    TResult Function()? submit,
+    TResult Function()? back,
+    required TResult orElse(),
+  }) {
+    if (back != null) {
+      return back();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Number value) number,
+    required TResult Function(_Clear value) clear,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Dot value) dot,
+    required TResult Function(_Submit value) submit,
+    required TResult Function(_Back value) back,
+  }) {
+    return back(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Number value)? number,
+    TResult Function(_Clear value)? clear,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Dot value)? dot,
+    TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
+  }) {
+    return back?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Number value)? number,
+    TResult Function(_Clear value)? clear,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Dot value)? dot,
+    TResult Function(_Submit value)? submit,
+    TResult Function(_Back value)? back,
+    required TResult orElse(),
+  }) {
+    if (back != null) {
+      return back(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Back implements KeyTapEvent {
+  const factory _Back() = _$_Back;
 }

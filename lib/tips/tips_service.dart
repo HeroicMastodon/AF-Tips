@@ -54,14 +54,15 @@ class TipsService extends ChangeNotifier {
   }
 
   void handleKeyboardEvent(KeyTapEvent event) {
-    print(event);
     event.when(
       number: (number) {
         var value = amount.value.amount;
-
         if (value == "0") value = "";
 
-        amount.value = amount.value.copyWith(amount: value + number);
+        final exp = RegExp(r"\d*\.\d\d");
+        final newValue = exp.hasMatch(value) ? value : value + number;
+
+        amount.value = amount.value.copyWith(amount: newValue);
       },
       clear: () {
         amount.value = amount.value.copyWith(amount: "0");
@@ -81,6 +82,9 @@ class TipsService extends ChangeNotifier {
       submit: () {
         page.value = const TipsPageState.submitted();
       },
+      back: () {
+        page.value = const TipsPageState.entering();
+      }
     );
   }
 }
