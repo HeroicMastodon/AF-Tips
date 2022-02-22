@@ -1,5 +1,6 @@
 import 'package:af_tips/tips/tips_results.dart';
 import 'package:af_tips/tips/tips_service.dart';
+import 'package:af_tips/tips/widgets/keyboard/keyboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
 
@@ -17,25 +18,39 @@ class Tips extends HookWidget {
     final service = useGet<TipsService>();
     final amount = useListenable(service.amount);
     final device = useWatchOnly((TipsService service) => service.device);
+    final page = service.page;
     final isWatch = device.value.when(mobile: () => false, watch: () => true);
     // final total
 
     var padding = 8.0;
 
     final textStyle =
-        isWatch ? TextStyle(fontSize: 16) : TextStyle(fontSize: 24);
+        isWatch ? const TextStyle(fontSize: 16) : const TextStyle(fontSize: 24);
 
     return Column(
       children: [
-        Padding(
-          padding: EdgeInsets.only(bottom: padding),
-          child: Amount(),
+        Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(bottom: padding),
+                child: const Amount(),
+              ),
+            ),
+          ],
         ),
-        TipsResult(
-          padding: padding,
-          textStyle: textStyle,
-          tipAmount: 0,
-          total: 0,
+        page.value.when(
+          entering: () => Expanded(
+            child: Keyboard(
+              tapHandler: (event) => service.handleKeyboardEvent(event),
+            ),
+          ),
+          submitted: () => TipsResult(
+            padding: padding,
+            textStyle: textStyle,
+            tipAmount: amount.value.tipAmount,
+            total: amount.value.total,
+          ),
         ),
       ],
     );

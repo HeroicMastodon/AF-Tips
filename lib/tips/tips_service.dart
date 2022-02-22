@@ -4,6 +4,7 @@ import 'package:af_tips/tips/device/device_notifier.dart';
 import 'package:af_tips/tips/device/device_state.dart';
 import 'package:af_tips/tips/page_state/tips_page_notifier.dart';
 import 'package:af_tips/tips/page_state/tips_page_state.dart';
+import 'package:af_tips/tips/widgets/keyboard/key_tap_event.dart';
 import 'package:flutter/cupertino.dart';
 
 class TipsService extends ChangeNotifier {
@@ -50,5 +51,36 @@ class TipsService extends ChangeNotifier {
   AmountNotifier setTipPercent(num tip) {
     amount.value = amount.value.copyWith(tipPercent: tip);
     return amount;
+  }
+
+  void handleKeyboardEvent(KeyTapEvent event) {
+    print(event);
+    event.when(
+      number: (number) {
+        var value = amount.value.amount;
+
+        if (value == "0") value = "";
+
+        amount.value = amount.value.copyWith(amount: value + number);
+      },
+      clear: () {
+        amount.value = amount.value.copyWith(amount: "0");
+      },
+      delete: () {
+        final value = amount.value.amount;
+        var newValue = value.substring(0, value.length - 1);
+
+        if (newValue == "") newValue = "0";
+
+        amount.value = amount.value.copyWith(amount: newValue);
+      },
+      dot: () {
+        final value = amount.value.amount;
+        amount.value = amount.value.copyWith(amount: value + ".");
+      },
+      submit: () {
+        page.value = const TipsPageState.submitted();
+      },
+    );
   }
 }
