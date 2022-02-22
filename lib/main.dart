@@ -1,9 +1,7 @@
 import 'package:af_tips/setup.dart';
 import 'package:af_tips/tips/tips_page.dart';
 import 'package:af_tips/tips/tips_service.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
 
 void main() {
@@ -39,8 +37,8 @@ class MyHomePage extends HookWidget {
     final device = useListenable(service.device);
 
     service.setDeviceState(MediaQuery.of(context));
-    final insets = device.value.when(mobile: () => 16.0, watch: () => 8.0);
 
+    final insets = device.value.when(mobile: () => 16.0, watch: () => 8.0);
     var appBar = AppBar(
       title: Container(
         child: Text(title),
@@ -50,6 +48,7 @@ class MyHomePage extends HookWidget {
         ),
       ),
     );
+
     return Scaffold(
       appBar: device.value.when(
         mobile: () => appBar,
@@ -62,30 +61,6 @@ class MyHomePage extends HookWidget {
         padding: EdgeInsets.all(insets),
         child: const Center(child: Tips()),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.title),
-//       ),
-//       body: const Center(
-//         child: Tips()
-//       ),
-//       // floatingActionButton: FloatingActionButton(
-//       //   onPressed: _incrementCounter,
-//       //   tooltip: 'Increment',
-//       //   child: const Icon(Icons.add),
-//       // ), // This trailing comma makes auto-formatting nicer for build methods.
-//     );
-//   }
-// }

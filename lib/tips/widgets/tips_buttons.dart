@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get_it_hooks/get_it_hooks.dart';
 
@@ -17,16 +16,14 @@ class TipsOutlinedButton extends HookWidget {
   Widget build(BuildContext context) {
     final service = useGet<TipsService>();
     final device = useListenable(service.device);
-    final isWatch = device.value.when(mobile: () => false, watch: () => true);
 
-    var shape = RoundedRectangleBorder(
+    final isWatch = device.value.when(mobile: () => false, watch: () => true);
+    final shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(45.0),
     );
-
-    var density = isWatch
+    final density = isWatch
         ? const VisualDensity(horizontal: -4, vertical: -3)
         : VisualDensity.standard;
-
     final outlinedStyle = OutlinedButton.styleFrom(
         shape: shape,
         visualDensity: density,
@@ -53,17 +50,14 @@ class TipsElevatedButton extends HookWidget {
     final device = useListenable(service.device);
 
     final isWatch = device.value.when(mobile: () => false, watch: () => true);
-
-    var shape = RoundedRectangleBorder(
+    final shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(45.0),
     );
-
-    var density = isWatch
+    final density = isWatch
         ? const VisualDensity(horizontal: -4, vertical: -3)
         : VisualDensity.standard;
-
     final elevatedStyle =
-    ElevatedButton.styleFrom(shape: shape, visualDensity: density);
+        ElevatedButton.styleFrom(shape: shape, visualDensity: density);
 
     return ElevatedButton(
       onPressed: onTap,

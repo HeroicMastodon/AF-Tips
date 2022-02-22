@@ -55,23 +55,8 @@ class KeyboardKey extends HookWidget {
               displayValue,
               style: textStyle,
             ),
-            // style: OutlinedButton.styleFrom(
-            //   visualDensity: VisualDensity.compact,
-            //   shape: RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.circular(45.0),
-            //   ),
-            //   // visualDensity: density,
-            //   side: BorderSide(
-            //     color: Theme.of(context).colorScheme.primary,
-            //   ),
-            //   // fixedSize: Size.fromWidth(buttonWidth)
-            // ),
           ),
         ),
-        // child: GestureDetector(
-        //   onTap: () => handler(event),
-        //   child: Text(displayValue),
-        // ),
       ),
     );
   }

@@ -8,32 +8,6 @@ import 'package:af_tips/tips/widgets/keyboard/key_tap_event.dart';
 import 'package:flutter/cupertino.dart';
 
 class TipsService extends ChangeNotifier {
-  // num _amount = 0;
-  // set amount(num value) {
-  //   _amount = value;
-  //   notifyListeners();
-  // }
-  // num get amount => _amount;
-  //
-  // num _tip = 20;
-  // set tip(num value) {
-  //   _tip = value;
-  //   notifyListeners();
-  // }
-  // num get tip => _tip;
-  //
-  // num get tipAmount => amount * (tip / 100);
-  //
-  // num get total => amount + tipAmount;
-  //
-  // bool _isWatch = false;
-  //
-  // set isWatch(bool value) {
-  //   _isWatch = value;
-  //   notifyListeners();
-  // }
-  //
-  // bool get isWatch => _isWatch;
   final amount = AmountNotifier(const AmountState());
   final page = TipsPageNotifier(const TipsPageState.entering());
   final device = DeviceNotifier(const DeviceState.mobile());

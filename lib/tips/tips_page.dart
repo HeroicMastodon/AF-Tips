@@ -12,25 +12,18 @@ class Tips extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final tipAmount = useWatchOnly((TipsService service) => service.tipAmount);
-    // final total = useWatchOnly((TipsService service) => service.total);
-    // final isWatch = useWatchOnly((TipsService service) => service.isWatch);
     final service = useGet<TipsService>();
     final amount = useListenable(service.amount);
     final device = useListenable(service.device);
     final page = useListenable(service.page);
 
     final isWatch = device.value.when(mobile: () => false, watch: () => true);
-    // final total
-
-    var padding = 8.0;
-
+    const padding = 8.0;
     final textStyle =
         isWatch ? const TextStyle(fontSize: 16) : const TextStyle(fontSize: 24);
     final keyboard = Keyboard(
       tapHandler: service.handleKeyboardEvent,
     );
-
     final tipsResult = TipsResult(
       padding: padding,
       textStyle: textStyle,
@@ -41,11 +34,11 @@ class Tips extends HookWidget {
     return Column(
       children: [
         Row(
-          children: [
+          children: const [
             Expanded(
               child: Padding(
                 padding: EdgeInsets.only(bottom: padding),
-                child: const Amount(),
+                child: Amount(),
               ),
             ),
           ],
